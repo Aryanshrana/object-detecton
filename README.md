@@ -1,0 +1,2 @@
+# object-detecton
+jenkins pipeine
