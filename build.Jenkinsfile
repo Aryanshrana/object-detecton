@@ -2,20 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Authentication') {
-            steps {
-                sh 'cd yolo5...'
+        steps {
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
             }
-        }
-        stage('Build') {
-            steps {
-                sh 'echo building...'
-            }
-        }
-        stage('Push to ECR') {
-            steps {
-                sh 'echo pushing...'
-            }
-        }
     }
 }
