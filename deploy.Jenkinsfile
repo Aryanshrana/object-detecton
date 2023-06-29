@@ -11,9 +11,9 @@ pipeline {
     stages {
         stage('Setting default namespace') {
             steps {
-                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
-                    sh 'kubectl config set-context --current --namespace=${K8S_NAMESPACE}'
-                }
+                    sh '''
+                        kubectl config set-context --current --namespace=${K8S_NAMESPACE}
+                    '''
             }
         }
         stage('Deploy in k8s') {
