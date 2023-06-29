@@ -6,7 +6,11 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                sh '# kubectl apply -f ....'
+
+                sh '''
+                    echo authenticate
+                    kubectl apply -f yolo5-deployment.yaml
+                '''
             }
         }
     }

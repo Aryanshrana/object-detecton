@@ -1,0 +1,17 @@
+services:
+  fronetend:
+    build: ./fronetend
+    ports:
+      - "8082:8082"
+    depends_on:
+      - yolo5
+      - mongo
+
+  yolo5:
+    build: ./yolo5
+    ports:
+      - "8081:8081"
+
+  mongo:
+    image: "mongo"
+
