@@ -4,6 +4,13 @@ pipeline {
     parameters { string(name: 'YOLO5_IMAGE_URL', defaultValue: '', description: '') }
 
     stages {
+        stage('Setting default namespace') {
+            steps {
+                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
+                    sh 'kubectl config set-context --current --namespace=${K8S_NAMESPACE}'
+                }
+            }
+        }
         stage('Deploy in k8s') {
             steps {
 
