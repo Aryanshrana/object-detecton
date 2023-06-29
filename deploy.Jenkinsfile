@@ -2,12 +2,17 @@ pipeline {
     agent any
 
     parameters { string(name: 'YOLO5_IMAGE_URL', defaultValue: '', description: '') }
+    environment {
+        AWS_REGION_K8S = 'us-west-1'
+        K8S_CLUSTER_NAME = 'k8s-batch1'
+        K8S_NAMESPACE = 'aryansh-ns'
+    }
 
     stages {
         stage('Setting default namespace') {
             steps {
                 withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
-                    sh 'kubectl config set-context --current --namespace=${aryansh-ns}'
+                    sh 'kubectl config set-context --current --namespace=${K8S_NAMESPACE}'
                 }
             }
         }
