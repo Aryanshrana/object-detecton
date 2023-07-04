@@ -5,6 +5,7 @@ pipeline {
         stage('install dependency'){
             steps {
                 sh '''
+                    cd yolo5
                     pip install -r requirements.txt
                    '''
             }
