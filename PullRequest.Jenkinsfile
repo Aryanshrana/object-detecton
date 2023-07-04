@@ -12,7 +12,11 @@ pipeline {
         }
         stage('Unittest') {
             steps {
-                sh 'python3 -m pytest --junitxml results.xml tests'
+
+                sh '''
+                    cd yolo5
+                    python3 -m pytest --junitxml results.xml tests
+                   '''
             }
         }
         stage('Lint') {
