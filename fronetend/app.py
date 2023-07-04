@@ -9,8 +9,8 @@ from pymongo import MongoClient, DESCENDING
 
 app = Flask(__name__, static_url_path='')
 
-YOLO_URL = 'http://localhost:8081'
-MONGO_URL = 'mongodb://localhost:27017'
+YOLO_URL = f'http://yolo5:8081'
+#MONGO_URL = 'mongodb://mongo:27017'
 
 
 @app.route('/', methods=['POST'])
