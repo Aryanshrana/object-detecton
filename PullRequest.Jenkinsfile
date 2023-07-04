@@ -2,9 +2,21 @@ pipeline {
     agent any
 
     stages {
+        stage('install dependency'){
+            steps {
+                sh '''
+                    cd yolo5
+                    pip install -r requirements.txt
+                   '''
+            }
+        }
         stage('Unittest') {
             steps {
-                echo "testing"
+
+                sh '''
+                    cd yolo5
+                    python3 -m pytest --junitxml results.xml tests
+                   '''
             }
         }
         stage('Lint') {
@@ -17,5 +29,6 @@ pipeline {
                 echo "testing"
             }
         }
+
     }
 }
